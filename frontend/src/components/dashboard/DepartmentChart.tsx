@@ -12,7 +12,7 @@ export default function DepartmentChart({ data }: DepartmentChartProps) {
   const isEmpty = data.length === 0
 
   return (
-    <div className="glass-card bg-white border-slate-100 shadow-sm flex flex-col h-[320px]">
+    <div className="glass-card bg-white border-slate-100 shadow-sm flex flex-col h-[270px]">
       <div className="px-5 py-3 border-b border-slate-50">
         <h3 className="text-xs font-bold text-slate-800 flex items-center gap-2 uppercase tracking-wide">
           <PieChartIcon size={14} className="text-primary-600" />
@@ -34,13 +34,13 @@ export default function DepartmentChart({ data }: DepartmentChartProps) {
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
-            <PieChart margin={{ top: -15, right: 0, bottom: 0, left: 0 }}>
+            <PieChart>
               <Pie
                 data={data}
                 cx="50%"
-                cy="42%"
-                innerRadius={60}
-                outerRadius={95}
+                cy="45%"
+                innerRadius={50}
+                outerRadius={85}
                 paddingAngle={4}
                 dataKey="value"
               >

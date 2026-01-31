@@ -167,13 +167,14 @@ export default function EmployeeList() {
       </div>
 
       <div className="glass-card flex-1 overflow-hidden bg-white flex flex-col">
-        <div className="flex-1 overflow-auto custom-scrollbar">
+        <div className="flex-1 overflow-auto no-scrollbar">
           <Table 
             columns={columns} 
             dataSource={filtered.slice((currentPage - 1) * pageSize, currentPage * pageSize)} 
             rowKey="id"
             loading={loading}
             pagination={false}
+            scroll={{ x: 800 }}
             className="custom-antd-table"
             locale={{
               emptyText: (

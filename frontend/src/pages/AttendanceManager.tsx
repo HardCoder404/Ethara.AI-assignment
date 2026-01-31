@@ -103,8 +103,8 @@ export default function AttendanceManager() {
   )
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in h-full overflow-hidden">
-      <div className="lg:col-span-2 flex flex-col h-full overflow-hidden">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in lg:h-full lg:overflow-hidden h-auto">
+      <div className="lg:col-span-2 flex flex-col lg:h-full h-[600px] overflow-hidden">
         <div className="glass-card p-6 flex flex-col h-full bg-white transition-all">
           <div className="flex items-center justify-between mb-6 shrink-0">
             <div className="flex items-center gap-4">

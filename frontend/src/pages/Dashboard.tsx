@@ -40,7 +40,7 @@ export default function Dashboard() {
   }, [])
 
   if (loading) return (
-    <div className="flex flex-col items-center justify-center p-20 space-y-4">
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-10 space-y-4">
       <Loader2 className="animate-spin text-primary-600" size={32} />
       <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest">Loading Dashboard</p>
     </div>

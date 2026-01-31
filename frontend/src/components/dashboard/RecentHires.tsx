@@ -18,7 +18,7 @@ interface RecentHiresProps {
 
 export default function RecentHires({ employees }: RecentHiresProps) {
   return (
-    <div className="lg:col-span-2 glass-card bg-white border-slate-100 shadow-sm flex flex-col overflow-hidden h-[320px]">
+    <div className="lg:col-span-2 glass-card bg-white border-slate-100 shadow-sm flex flex-col overflow-hidden h-[270px]">
       <div className="px-5 py-3 border-b border-slate-50 flex items-center justify-between">
         <h3 className="text-xs font-bold text-slate-800 flex items-center gap-2 uppercase tracking-wide">
           <Users size={14} className="text-primary-600" />
@@ -35,7 +35,7 @@ export default function RecentHires({ employees }: RecentHiresProps) {
           pagination={false}
           rowKey="id"
           size="small"
-          className="custom-antd-table"
+          className="custom-antd-table px-2"
           locale={{
             emptyText: (
               <div className="py-12 border-0">

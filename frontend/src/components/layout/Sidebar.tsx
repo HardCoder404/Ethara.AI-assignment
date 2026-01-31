@@ -3,9 +3,11 @@ import { LayoutDashboard, Users, CalendarCheck, Settings, HelpCircle, Zap, Chevr
 
 interface SidebarProps {
   isOpen: boolean
+  isMobile?: boolean
+  onClose?: () => void
 }
 
-export default function Sidebar({ isOpen }: SidebarProps) {
+export default function Sidebar({ isOpen, isMobile, onClose }: SidebarProps) {
   const location = useLocation()
 
   const navItems = [
@@ -14,9 +16,13 @@ export default function Sidebar({ isOpen }: SidebarProps) {
     { name: 'Attendance', path: '/attendance', icon: CalendarCheck },
   ]
 
+  const widthClass = isMobile 
+    ? (isOpen ? 'w-64' : 'w-0 opacity-0 border-0 pointer-events-none') 
+    : (isOpen ? 'w-64' : 'w-20')
+
   return (
-    <aside className={`bg-white rounded-[2rem] shadow-sm border border-slate-200/50 flex flex-col transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'} shrink-0 relative z-40 overflow-hidden`}>
-      <div className={`flex items-center shrink-0 ${isOpen ? 'p-8 justify-between' : 'py-8 justify-center'}`}>
+    <aside className={`bg-white rounded-[2rem] shadow-sm border border-slate-200/50 flex flex-col transition-all duration-300 ${widthClass} shrink-0 relative z-40 overflow-hidden h-full`}>
+      <div className={`flex items-center shrink-0 ${isOpen ? 'p-8 justify-between' : 'py-8 justify-center'} ${isMobile && !isOpen && 'hidden'}`}>
         {isOpen ? (
           <div className="flex items-center gap-2">
              <div className="w-9 h-9 bg-primary-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-600/30 shrink-0">
@@ -31,7 +37,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
         )}
       </div>
 
-      <nav className="mt-2 px-4 space-y-1.5 flex-1 overflow-y-auto no-scrollbar">
+      <nav className={`mt-2 px-4 space-y-1.5 flex-1 overflow-y-auto no-scrollbar ${isMobile && !isOpen && 'hidden'}`}>
         <p className={`px-4 mb-3 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] ${!isOpen && 'text-center'}`}>
           {isOpen ? 'Main Menu' : '••'}
         </p>
@@ -39,6 +45,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
           <Link
             key={item.path}
             to={item.path}
+            onClick={() => isMobile && onClose?.()}
             className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all group ${
               location.pathname === item.path 
                 ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/20' 
@@ -71,7 +78,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
       </nav>
 
       {isOpen && (
-        <div className="p-4 m-4 bg-primary-50 rounded-2xl border border-primary-100 relative overflow-hidden group shrink-0">
+        <div className={`p-4 m-4 bg-primary-50 rounded-2xl border border-primary-100 relative overflow-hidden group shrink-0 ${isMobile && !isOpen && 'hidden'}`}>
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-5 h-5 bg-primary-600 rounded-md flex items-center justify-center text-white scale-75 shrink-0">
@@ -84,7 +91,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
         </div>
       )}
 
-      <div className="p-4 border-t border-slate-50 shrink-0">
+      <div className={`p-4 border-t border-slate-50 shrink-0 ${isMobile && !isOpen && 'hidden'}`}>
          <div className={`flex items-center ${isOpen ? 'gap-3 px-4' : 'justify-center'} py-2`}>
             <div className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center font-bold text-[10px] text-slate-600 shrink-0">
                AD
